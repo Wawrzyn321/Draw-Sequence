@@ -20,13 +20,12 @@
       <li>Vue.js 2 with Vue Router</li>
       <li>Entity Framework Core</li>
       <li>Jest & XUnit</li>
-      <li>Tesseract for OCR</li>
+      <li><a href="https://github.com/tesseract-ocr/">Tesseract</a> for OCR</li>
     </ul>
     <p>Application data is stored in SQL Server database.</p>
 
     <h3>Source?</h3>
-    <p></p>
-    <h1 style="color:pink">todo</h1>
+    <p><a href="https://github.com/Wawrzyn321/Draw-Sequence">Github</a></p>
   </article>
 </template>
 
