@@ -1,0 +1,22 @@
+{
+    "rootDir": "./..",
+    "testRegex": "./*.test.js",
+    "moduleFileExtensions": [
+      "js",
+      "vue"
+    ],
+    "moduleNameMapper": {
+      "^@Partials/(.*)$": "<rootDir>/partials/$1",
+      "^@Pages/(.*)$": "<rootDir>/pages/$1",
+      "^@TestUtility$": "<rootDir>/tests/testUtility.js",
+      "^@Api/(.*)$": "<rootDir>/api/$1"
+    },
+    "transform": {
+      "^.+\\.js?$": "babel-jest",
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "snapshotSerializers": [
+      "jest-serializer-vue"
+    ],
+    "setupFiles": ["jest-canvas-mock"]
+  }
