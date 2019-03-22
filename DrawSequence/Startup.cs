@@ -9,6 +9,7 @@ using DrawSequence.Commands.Auth.Contract;
 using DrawSequence.Commands.Image;
 using DrawSequence.Commands.Image.Contract;
 using DrawSequence.Controllers;
+using DrawSequence.Controllers.Contract;
 using DrawSequence.Database;
 using DrawSequence.Infrastructure;
 using DrawSequence.Infrastructure.FormFileVerification;
@@ -75,6 +76,7 @@ namespace DrawSequence
         private void AddAuthCommands(IServiceCollection services)
         {
             services.AddScopedLazy<ILoginCommand, LoginCommand>();
+            services.AddScopedLazy<IChangePasswordCommand, ChangePasswordCommand>();
         }
 
         private void ConfigureAuthenticationOptions(AuthenticationOptions options)
