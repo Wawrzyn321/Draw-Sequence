@@ -1,0 +1,9 @@
+.list-container {
+    display: grid;
+    /* autoprefixer: off */
+    grid-template-columns: repeat(auto-fill, 250px);
+    padding: 0;
+    max-height: 600px;
+    overflow: auto;
+    justify-content: center;
+  }

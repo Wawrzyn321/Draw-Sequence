@@ -1,0 +1,22 @@
+<!-- <nav toggleable="sm" type="dark" variant="info"> -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-info">
+    <a class="navbar-brand" href="#">Draw-Sequence</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" (click)="isCollapsed = !isCollapsed">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" [class.collapse]='isCollapsed'>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item nav-link text-dark" outerLinkActive="active-link">
+                <a routerLink="/counting-list" routerLinkActive="active-link">Counter</a>
+            </li>
+            <li class="nav-item nav-link text-light">
+                <a routerLink="/contribute" routerLinkActive="active-link">Contribute</a>
+            </li>
+            <li class="nav-item nav-link text-light">
+                <a routerLink="/about" routerLinkActive="active-link">About</a>
+            </li>
+        </ul>
+    </div>
+</nav>

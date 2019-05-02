@@ -1,0 +1,8 @@
+a {
+    text-decoration: none;
+    color: hsla(0,0%,100%,.5);
+}
+
+.active-link {
+    color: white;
+}

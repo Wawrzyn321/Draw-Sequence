@@ -1,0 +1,16 @@
+<article class="m-3">
+    <h2>Admin Login</h2>
+    <form [formGroup]="form">
+    <div class="form-field mb-3">
+        <label>Administrator login</label>
+        <input class="form-control" name="username" formControlName="username" placeholder="Administrator Login">
+    </div>
+    <div class="form-field mb-3">
+        <label>Password</label>
+        <input class="form-control" name="password" formControlName="password" placeholder="Password" type="password">
+    </div>
+    <div class="form-buttons">
+    <button class="btn btn-info" (click)="login()">Log in</button>
+    </div>
+</form>
+</article>

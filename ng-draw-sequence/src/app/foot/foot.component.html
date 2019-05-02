@@ -1,0 +1,11 @@
+<footer class="footer mt-auto py-3">
+  <div class="container">
+    <a *ngIf="!isLoggedIn; else authenticatedView" routerLink="/login" class="d-block text-center">Admin Login</a>
+    <ng-template #authenticatedView>
+      <div class="text-center">
+        <a routerLink="/manage" class="mr-1">Admin Panel</a>
+        <a href="#" target="_self" preventDefault (click)="logout()">Log out</a>
+      </div>
+    </ng-template>
+  </div>
+</footer>
