@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DrawSequence.Commands.Auth.Contract;
 using DrawSequence.Controllers;
+using DrawSequence.Controllers.Contract;
 using DrawSequence.Database;
 using DrawSequence.ViewModels;
 using Microsoft.AspNetCore.Mvc;
@@ -19,16 +20,20 @@ namespace DrawSequence.Tests.Controllers
         [Fact]
         public async Task Login_InvokesILoginCommand()
         {
-            var mock = new Mock<ILoginCommand>();
-            mock
+            var loginCommandMock = new Mock<ILoginCommand>();
+            loginCommandMock
                 .Setup(c => c.ExecuteAsync(It.IsAny<LoginViewModel>(), It.IsAny<ModelStateDictionary>()))
                 .Returns(Task.FromResult((IActionResult)null));
-            var command = new Lazy<ILoginCommand>(() => mock.Object);
-            var controller = new AuthController(command);
+            var loginCommand = new Lazy<ILoginCommand>(() => loginCommandMock.Object);
+
+            var changePasswordCommandMock = new Mock<IChangePasswordCommand>();
+            var changePasswordCommand = new Lazy<IChangePasswordCommand>(() => changePasswordCommandMock.Object);
+
+            var controller = new AuthController(loginCommand, changePasswordCommand);
 
             await controller.Login(It.IsAny<LoginViewModel>());
 
-            mock.Verify(c => c.ExecuteAsync(It.IsAny<LoginViewModel>(), It.IsAny<ModelStateDictionary>()));
+            loginCommandMock.Verify(c => c.ExecuteAsync(It.IsAny<LoginViewModel>(), It.IsAny<ModelStateDictionary>()));
         }
 
     }
