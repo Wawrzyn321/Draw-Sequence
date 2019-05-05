@@ -3,11 +3,6 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-service/auth.service';
 
-interface JwtToken { // todo
-  accessToken: string;
-  accessTokenExpiration: string;
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',

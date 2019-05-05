@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { PointContainerService } from 'src/app/point-container/point-container.service';
 import { Router, NavigationEnd } from '@angular/router';
-import { ImageService } from 'src/app/image-service/image.service';
+import { ImageService } from 'src/app/core/image-service/image.service';
 
 @Component({
   selector: 'app-manage',

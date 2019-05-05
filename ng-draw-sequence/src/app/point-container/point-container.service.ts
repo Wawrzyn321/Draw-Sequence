@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ImageService } from '../image-service/image.service';
+import { ImageService } from '../core/image-service/image.service';
 import { DomSanitizer } from '@angular/platform-browser';
 declare var JSZip: any;
 

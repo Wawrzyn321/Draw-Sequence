@@ -1,33 +1,27 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/observable/of'; // todo wtf importy
+import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import * as moment from 'moment';
-import { map, catchError } from 'rxjs/operators';
-
-interface JwtToken { // todo
-  accessToken: string;
-  accessTokenExpiration: string;
-}
-
-const api = 'https://localhost:44307'; // todo
+import { API_CONFIG, ApiConfig } from 'src/app/core/apiConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, @Inject(API_CONFIG) private config: ApiConfig) { }
 
   login(username: string, password: string) {
     const formData = new FormData();
     formData.append('username', username);
     formData.append('password', password);
 
-    return this.httpClient.post(api + '/Auth/Login', formData);
+    const url = this.config.mainUrl + this.config.auth + '/Login';
+    return this.httpClient.post(url, formData);
   }
 
-  public setSession(token: JwtToken) { // todo
+  public setSession(token: JwtToken) {
     localStorage.setItem('id_token', token.accessToken);
     localStorage.setItem('expires_at', JSON.stringify(token.accessTokenExpiration.valueOf()));
   }

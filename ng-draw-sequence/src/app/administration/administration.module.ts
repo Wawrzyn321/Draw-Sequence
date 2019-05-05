@@ -19,6 +19,10 @@ import { SharedModule } from '../shared/shared.module';
   ],
   providers: [
     AuthService
+  ],
+  exports: [
+    CommonModule,
+    SharedModule
   ]
 })
 export class AdministrationModule { }

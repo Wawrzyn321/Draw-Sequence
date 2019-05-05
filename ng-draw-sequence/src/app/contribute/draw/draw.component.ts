@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ImageService } from 'src/app/image-service/image.service';
+import { ImageService } from 'src/app/core/image-service/image.service';
 import { PointContainerService } from 'src/app/point-container/point-container.service';
 
 @Component({

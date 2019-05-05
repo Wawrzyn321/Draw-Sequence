@@ -44,7 +44,6 @@ namespace DrawSequence
                 options.AddPolicy("AllowAllOriginsHeadersAndMethods",
                     builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
             });
-            services.AddMvc();
             services.AddDbContext<Context>(options =>
                 options.UseSqlServer(Configuration.GetConnectionStringWithFallback()));
             services.AddIdentity<User, IdentityRole>()
