@@ -115,5 +115,6 @@ export default {
   max-height: 600px;
   overflow: auto;
   justify-content: center;
+  width: 770px;
 }
 </style>

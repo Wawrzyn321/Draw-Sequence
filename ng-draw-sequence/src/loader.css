@@ -1,0 +1,29 @@
+.loader::before {
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  background-color: rgb(91, 201, 218);
+  display: inline-block;
+  -webkit-animation: 0.8s poof linear infinite;
+  animation: 0.8s poof linear infinite;
+  -webkit-animation-name: poof;
+  animation-name: poof;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  position: relative;
+  top: 0.2em;
+  content: "";
+  bottom: 0;
+  margin-right: 10px;
+}
+
+@keyframes poof {
+  from {
+    transform: scale(0, 0);
+  }
+  to {
+    transform: scale(1, 1);
+  }
+}

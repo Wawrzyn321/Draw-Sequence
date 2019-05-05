@@ -1,10 +1,27 @@
 <article class="m-3">
   <h2>Admin</h2>
-  <button class="btn btn-info">Delete selected images</button>
-  <!-- <b-button
-    variant="info"
-    :disabled="selectedIndex === null"
-    @click="deleteSelected"
-    >Delete selected images</b-button
-  > -->
+  <p *ngIf="isLoading else loaded">
+    Loading...
+  </p>
+  <ng-template #loaded>
+    <div *ngIf="visibleCards.length > 0 else noCards">
+      <button class="btn btn-info" [disabled]="selectedIndex === null" (click)="deleteSelected()">
+        Delete selected images
+      </button>
+    </div>
+    <ul #container
+      class="list-container"
+      (scroll)="handleScroll()">
+      <li class="image-card"
+        *ngFor="let img of visibleCards"
+        [imageUrl]="img.imageUrl"
+        [imageId]="img.imageId"
+        [isSelected]="img.isSelected"
+        (cardClicked)="cardSelected($event)">
+      </li>
+    </ul>
+    <ng-template #noCards>
+      <p>No images.</p>
+    </ng-template>
+  </ng-template>
 </article>

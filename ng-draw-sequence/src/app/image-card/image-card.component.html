@@ -1,0 +1,4 @@
+<div [style.background-color]='backgroundColor'>
+    <p class="image-card-title">{{ imageId + 1 }}</p>
+</div>
+<img [src]="imageUrl" (load)="loaded()" (click)="clicked()" />

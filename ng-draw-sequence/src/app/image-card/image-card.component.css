@@ -1,11 +1,10 @@
-@import './loader.css';
-
 .image-card {
   width: 230px;
   height: 180px;
   margin: 10px;
   border: solid lightgray;
   position: relative;
+  background-color: #17A2B8;
 }
 
 .image-card > * {
@@ -17,20 +16,7 @@
   bottom: 0;
 }
 
-
-h2 {
-    margin: 10px;
-}
-
-p {
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-router-outlet {
-  display: none;
-}
-
-article > h2 {
-  margin: 10px;
+.image-card-title {
+  color: white;
+  text-align: center;
 }

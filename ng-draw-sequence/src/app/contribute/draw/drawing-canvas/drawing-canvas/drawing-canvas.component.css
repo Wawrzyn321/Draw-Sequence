@@ -1,0 +1,29 @@
+canvas {
+  margin: 0 auto;
+  display: block;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+#penSizeInput {
+  max-width: 80px;
+}
+
+#main-container {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+#clearButton {
+  max-height: 2.5em;
+}
+
+@media only screen and (max-width: 576px) {
+  #drawing-tools {
+    min-width: 350px;
+  }
+}
+
+input[type="radio"] {
+  margin-right: 2px;
+}

@@ -1,9 +1,9 @@
 <template>
-  <div class="image-card">
+  <ul class="image-card">
     <b-badge type="dark" variant="info">{{ id + 1 }}</b-badge>
     <img :class="{ 'd-none': !isLoaded }" :src="url" @load="loaded" />
     <loading-spinner :isLoading="!isLoaded" />
-  </div>
+  </ul>
 </template>
 
 <script>

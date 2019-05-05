@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { NavigationComponent } from './navigation/navigation.component';
 import { FootComponent } from './foot/foot.component';
-import { PreventDefaultDirective } from './prevent-default.directive';
+import { PreventDefaultDirective } from './prevent-default.directive/prevent-default.directive';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { PreventDefaultDirective } from './prevent-default.directive';
     AdministrationModule,
     ContributeModule,
     HttpClientModule,
+    SharedModule
     // !environment.production
   ],
   providers: [],

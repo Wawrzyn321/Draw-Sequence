@@ -41,6 +41,10 @@ export class AuthService {
     return !!localStorage.getItem('id_token') && moment().isBefore(this.getExpiration());
   }
 
+  getToken() {
+    return localStorage.getItem('id_token');
+  }
+
   getExpiration() {
     const expiration = localStorage.getItem('expires_at');
     if (expiration == null) {

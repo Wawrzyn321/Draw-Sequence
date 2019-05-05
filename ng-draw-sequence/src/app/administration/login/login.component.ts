@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth-service/auth.service';
 
@@ -28,7 +28,7 @@ export class LoginComponent {
     this.form = new FormGroup({
       username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
-  }, { updateOn: 'blur' });
+    }, { updateOn: 'blur' });
   }
 
   login() {
@@ -38,11 +38,9 @@ export class LoginComponent {
         .subscribe(
           token => {
             this.authService.setSession(token as JwtToken);
-            console.log(token);
             this.router.navigateByUrl('manage');
           },
           err => {
-            console.log('nie z loginu');
             console.warn(err);
           }
         );

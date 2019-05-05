@@ -1,3 +1,24 @@
-<p>
-  upload works!
-</p>
+<div class="main-container">
+    <form class="mb-2">
+      <div class="custom-file">
+        <input type="file" id="fileInput" name="file" (change)="fileInputChanged()" #fileInput>
+        <label class="custom-file-label"for="fileInput">{{ inputLabelText }}</label>
+      </div>
+    </form>
+    <app-upload-summary [result]="lastResult"></app-upload-summary>
+    <section class="my-3" *ngIf="lastResult && !lastResult.succeeded">
+      <h5>Advanced options</h5>
+        <input class="form-check-input" type="checkbox" [(ngModel)]="useWhitelist" name="useWhitelist"/>
+        <label class="form-check-label" for="checkbox">Recognize only numbers</label> 
+      <br />
+        <input class="form-check-input" type="checkbox" [(ngModel)]="recognizeOnlyTarget" name="recognizeOnlyTarget" />
+        <label class="form-check-label" for="checkbox">Try to recognize only target number</label>
+    </section>
+    <button
+      class="btn btn-info"
+      type="submit"
+      (click)="onSubmit($event)"
+      [disabled]="!file">
+    <span [class.loader]="isSubmitting">{{ submitButtonText }} </span>
+    </button>
+  </div>

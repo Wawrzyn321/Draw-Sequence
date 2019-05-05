@@ -1,0 +1,10 @@
+<div *ngIf="result" class="mb-2 text-center">
+  <ul>
+    <li *ngFor="let message of result.errors">
+      {{ message }}
+    </li>
+  </ul>
+  <p class="alert" [class]="recognizedTextClass">
+    {{ recognizedTextMessage }}
+  </p>
+</div>

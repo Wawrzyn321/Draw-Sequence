@@ -1,22 +1,17 @@
 <article class="m-3">
     <h2>Counting list</h2>
-    <!-- <p v-if="isLoading">Loading...</p>
-    <ul
-      v-else-if="visibleCards.length"
+    <p *ngIf="isLoading">Loading...</p>
+    <ul #container
+      *ngIf="!isLoading && visibleCards.length"
       class="list-container"
-      ref="container"
-      @scroll="scrollHandler"
-    >
-      <li
-        v-for="img in visibleCards"
-        :key="img.index"
-        is="card"
-        :id="img.index"
-        :url="img.imageUrl"
-      ></li>
+      (scroll)="handleScroll()">
+      <li class="image-card"
+        *ngFor="let img of visibleCards"
+        [imageUrl]="img.imageUrl"
+        [imageId]="img.imageId">
+      </li>
     </ul>
-    <p v-else>
-      There is nothing there now, why don't you check out the
-      <router-link to="/add">Contribute</router-link> tab?
-    </p> -->
+    <p *ngIf="!isLoading && !visibleCards.length">
+      There is nothing there now, why don't you check out the <a routerLink="contribute">Draw</a> tab?
+    </p>
   </article>

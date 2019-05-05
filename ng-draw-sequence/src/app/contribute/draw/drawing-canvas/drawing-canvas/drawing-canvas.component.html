@@ -1,0 +1,29 @@
+<div class="row" id="main-container">
+  <div class="col-sm-9 mx-auto">
+    <canvas width="300" height="200" #canvas (mousedown)="startDrawing()" (mouseleave)="stopDrawing()"
+      (mouseup)="stopDrawing()" (mousemove)="stroke($event)"></canvas>
+  </div>
+
+  <div class="col-sm-3 mx-auto row" id="drawing-tools">
+    <div class="col-sm-12 col-4 mb-0">
+
+      <div>
+        <input class="form-check-label" type="radio" name="currentColorChoice" [(ngModel)]="currentColor" [value]="drawColor" id="drawColorChoice">
+        <label for="drawColorChoice">Draw</label>
+      </div>
+      <div>
+        <input class="form-check-label" type="radio" name="currentColorChoice" [(ngModel)]="currentColor" [value]="eraseColor" id="eraseColorChoice">
+        <label for="eraseColorChoice">Erase</label>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-4 px-0">
+      <label for="penSizeInput">Pen size</label>
+      <input id="penSizeInput" type="number" [min]="minPenSize" [max]="maxPenSize" [(ngModel)]="penSize" />
+    </div>
+
+    <button class="btn btn-info col-sm-12 col-4" id="clearButton" (click)="resetCanvas()">
+      Clear
+    </button>
+  </div>
+</div>

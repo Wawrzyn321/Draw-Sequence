@@ -1,3 +1,9 @@
-<p>
-  draw works!
-</p>
+<div>
+  <app-drawing-canvas></app-drawing-canvas>
+  <div>
+    <app-upload-summary [result]="lastResult"></app-upload-summary>
+    <button class="btn btn-info mt-3" type="submit" (click)="onSubmit($event)">
+      <span [class.loader]="isSubmitting">{{ submitButtonText }} </span>
+    </button>
+  </div>
+</div>

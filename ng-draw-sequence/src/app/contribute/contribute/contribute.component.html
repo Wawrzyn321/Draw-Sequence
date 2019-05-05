@@ -6,13 +6,13 @@
         below.
     </p>
     <p>Next number to draw: {{ nextToDraw }}.</p>
-    <ul class="nav nav-tabs">
+    <ul class="nav nav-tabs mb-3">
         <li class="nav-item">
-            <a class="nav-link" routerLink="draw">Draw</a>
+            <a class="nav-link" routerLink="draw" routerLinkActive="active">Draw</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" routerLink="upload">Upload</a>
+            <a class="nav-link" routerLink="upload" routerLinkActive="active">Upload a picture</a>
         </li>
     </ul>
-    <router-outlet></router-outlet>
+    <router-outlet (activate)="updateImageCount()" (ocrSucceeded)="console.log('ah');"></router-outlet>
 </article>
