@@ -1,0 +1,88 @@
+h2 {
+    margin: 10px;
+}
+
+p {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.image-card {
+  width: 230px;
+  height: 180px;
+  margin: 10px;
+  border: solid lightgray;
+  position: relative;
+}
+
+.image-card > * {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.main-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: calc(100vh - 65px);
+}
+
+h3 {
+  margin-top: 16px;
+}
+
+canvas {
+  margin: 0 auto;
+  display: block;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+#penSizeInput {
+  max-width: 80px;
+}
+
+#main-container {
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+#clearButton {
+  max-height: 2.5em;
+}
+
+@media only screen and (max-width: 576px) {
+  #drawing-tools {
+    min-width: 350px;
+  }
+}
+
+#clear-button {
+  max-height: 2.5em;
+}
+
+button[type="submit"] {
+  margin: 0 auto;
+  display: block;
+}
+
+input[type="file"] {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-input-form {
+  max-width: 300px;
+  margin: 0 auto;
+  margin-bottom: 8px;
+}

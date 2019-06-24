@@ -1,0 +1,13 @@
+.router-link {
+  text-decoration: none;
+  color: hsla(0,0%,100%,.5);
+  padding: 8px;
+}
+.router-link:hover {
+  text-decoration: none;
+  color: hsla(0,0%,100%,.75);
+}
+
+.router-link.selected {
+  color: white;
+}
