@@ -1,18 +1,33 @@
 import * as actions from "./../actions/action-labels";
+import { defaultState } from "./defaultState";
 
-export default function reducers(state = [], action) {
+export default function reducers(state = defaultState.image, action) {
   switch (action.type) {
     case actions.ADD_IMAGE:
-      //console.log("red::add!");
-      return state;
-    case actions.LOAD_IMAGES:
-      //console.log("red::load!");
-      return state;
+      return {
+        ...state,
+        images: [...state.images, action.image]
+      };
     case actions.REMOVE_IMAGES:
-     // console.log("red::rem!");
-      return state;
+        return {
+          ...state,
+          images: action.images
+        };
+    case actions.SET_IMAGES:
+      return {
+        ...state,
+        images: action.images
+      };
+    case actions.SET_IMAGES_COUNT:
+        return {
+          ...state,
+          maxImagesCount: action.maxImagesCount
+        };
+    case actions.SET_IMAGE_SELECTED:
+      const newState = state;
+      state.images[action.index].isSelected = action.isSelected;
+      return newState;
     default:
-      //console.log("red::def!");
       return state;
   }
 }

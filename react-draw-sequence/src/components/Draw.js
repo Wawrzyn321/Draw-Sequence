@@ -1,7 +1,11 @@
 import React from "react";
 import DrawingCanvas from "./DrawingCanvas";
+import { ImageService } from './../services/image';
+import { connect } from 'react-redux';
+import UploadSummary from "./UploadSummary";
+import { setMaxImagesCount } from "../actions/imageActions";
 
-export default class Draw extends React.Component {
+class Draw extends React.Component {
   
   constructor(props) {
     super(props);
@@ -10,12 +14,50 @@ export default class Draw extends React.Component {
       lastResult: null,
       submitButtonText: "Submit"
     };
+
+    this.imageService = new ImageService();
+
     this.submit = this.submit.bind(this);
   }
 
-  submit(e) {
+  async submit(e) {
     e.preventDefault();
-    console.log(e);
+    const file = this.createFileToUpload();
+    await this.upload(file);
+  }
+
+  async upload(file) {
+    this.setState({lastResult: null});
+    const dataModel = new FormData();
+    dataModel.append("file", file);
+
+    try {
+      this.setState({isUploading: true});
+      const result = await this.imageService.uploadImage(dataModel);
+      this.setState({lastResult: result});
+      if (result.succeeded) {
+        this.props.dispatch(setMaxImagesCount(this.props.imageContainer.maxImagesCount + 1));
+      }
+    } catch (err) {
+      console.warn(err);
+    } finally {
+      this.setState({isUploading: false});
+    }
+  }
+  
+  createFileToUpload() {
+    const dataURI = document.querySelector("canvas").toDataURL();
+    const byteString = atob(dataURI.split(",")[1]);
+    const mimeString = dataURI
+      .split(",")[0]
+      .split(":")[1]
+      .split(";")[0];
+    const arrayBuffer = new ArrayBuffer(byteString.length);
+    const arr = new Uint8Array(arrayBuffer);
+    for (let i = 0; i < byteString.length; i++) {
+      arr[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([arrayBuffer], { type: mimeString });
   }
 
   render() {
@@ -23,7 +65,7 @@ export default class Draw extends React.Component {
       <section>
         <DrawingCanvas />
         <div>
-          {/* <upload-summary :result="lastResult"></upload-summary> */}
+          <UploadSummary result={this.state.lastResult} />
 
           <button
             className="btn btn-info mt-3"
@@ -39,3 +81,13 @@ export default class Draw extends React.Component {
     );
   }
 };
+
+function mapStateToProps() {
+  return (state) => {
+    return { 
+      imageContainer: state.image
+     };
+  };
+}
+
+export default connect(mapStateToProps())(Draw);

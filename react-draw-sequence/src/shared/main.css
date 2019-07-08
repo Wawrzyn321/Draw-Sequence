@@ -86,3 +86,46 @@ input[type="file"] {
   margin: 0 auto;
   margin-bottom: 8px;
 }
+
+.list-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 250px);
+  padding: 0;
+  max-height: 600px;
+  overflow: auto;
+  justify-content: center;
+  width: 770px;
+  list-style-type: none;
+}
+
+.image-card {
+  width: 230px;
+  height: 180px;
+  margin: 10px;
+  border: solid lightgray;
+  position: relative;
+  background-color: #17A2B8;
+}
+
+.image-card > * {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.image-card-title {
+  color: white;
+  text-align: center;
+}
+
+.login-form {
+  max-width: 450px;
+}
+
+.summary-alert {
+  max-width: 60%;
+  margin: 0 auto;
+}

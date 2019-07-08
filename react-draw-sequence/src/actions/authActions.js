@@ -1,17 +1,17 @@
 import { SET_CREDENTIALS, LOG_OUT } from './action-labels';
 
 
-export function logIn(access_token, token_expire) {
+export function logIn(credentials) {
     return {
         type: SET_CREDENTIALS,
-        access_token,
-        token_expire
+        access_token: credentials.accessTokenExpiration,
+        token_expire: credentials.accessTokenExpiration
     }
 }
 
 //added only for semantics
-export function relogin(access_token, token_expire) {
-    logIn(access_token, token_expire);   
+export function relogin(credentials) {
+    logIn(credentials);   
 }
 
 export function logout() {

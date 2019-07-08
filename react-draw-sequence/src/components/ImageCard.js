@@ -1,21 +1,42 @@
-import React from 'react';
+import React from "react";
+import { connect } from 'react-redux';
 
-export default class ImageCard extends React.Component {
+class ImageCard extends React.Component {
+  constructor(props) {
+    super(props);
 
-    constructor(props) {
-        super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.getContainerClass = this.getContainerClass.bind(this);
+  }
 
-        this.state = {
-            backgroundColor: 'red',
-            imageId: 20
-        };
+  handleClick() {
+    if (this.props.canSelect) {
+      this.props.selectedCallback(this.props.id);
     }
+  }
 
-    render() {
-        return <li class="image-card">
-            <div style={{backgroundColor: this.state.backgroundColor}}>
-                <p class="image-card-title">{ this.state.imageId + 1 }</p>
-            </div>
-          </li>;
-    }
+  getContainerClass() {
+    return "badge " + (this.props.state[this.props.id].isSelected ? "badge-dark" : "badge-info");
+  }
+
+  render() {
+    return (
+      <li className="image-card" onClick={this.handleClick}>
+        <span className={this.getContainerClass()}>
+          <p className="image-card-title">{this.props.id + 1}</p>
+        </span>
+        <img src={this.props.url} alt={"Loading " + this.props.id} />
+      </li>
+    );
+  }
 }
+
+function mapStateToProps() {
+  return state => {
+    return {
+      state: state.image.images
+    };
+  };
+}
+
+export default connect(mapStateToProps)(ImageCard);

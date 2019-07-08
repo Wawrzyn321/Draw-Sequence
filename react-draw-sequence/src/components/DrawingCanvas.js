@@ -119,7 +119,7 @@ export default class DrawingCanvas extends React.Component {
             height="200"
             onMouseDown={this.startDrawing}
             onMouseLeave={this.stopDrawing}
-            onMouseUp={this.startDrawing}
+            onMouseUp={this.stopDrawing}
             onMouseMove={this.stroke}
           />
         </div>

@@ -32,7 +32,7 @@ export default class Navigation extends React.Component {
               <NavLink activeClassName={selectedClass} className={linkClass} to="/list">Counter</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink activeClassName={selectedClass} className={linkClass} to="/contribute">Contribute</NavLink>
+              <NavLink activeClassName={selectedClass} className={linkClass} to="/contribute/upload">Contribute</NavLink>
             </li>
             <li className="nav-item">
               <NavLink activeClassName={selectedClass} className={linkClass} to="/about">About</NavLink>

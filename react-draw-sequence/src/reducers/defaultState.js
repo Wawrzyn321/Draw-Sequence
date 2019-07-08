@@ -5,7 +5,7 @@ export const defaultState = {
         token_expire: null
     },
     image: {
-        nextImage: null,
+        maxImagesCount: 0,
         images: []
     }
 };

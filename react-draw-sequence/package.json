@@ -10,7 +10,9 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "redux": "^4.0.1",
-    "uniqid": "^5.0.3"
+    "uniqid": "^5.0.3",
+    "jszip": "^3.2.0",
+    "lodash": "^4.17.11"
   },
   "scripts": {
     "start": "react-scripts start",
