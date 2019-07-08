@@ -1,6 +1,6 @@
 <template>
   <div class="main-container">
-    <form method="POST" enctype="multipart/form-data" class="mb-2">
+    <form method="POST" enctype="multipart/form-data" class="mb-2"> <!-- todo check enctype -->
       <b-form-file
         v-model="file"
         :state="Boolean(file)"
