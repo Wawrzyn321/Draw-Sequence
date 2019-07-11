@@ -16,6 +16,7 @@ class Draw extends React.Component {
     };
 
     this.imageService = new ImageService();
+    this.canvasRef = React.createRef();
 
     this.submit = this.submit.bind(this);
   }
@@ -46,7 +47,8 @@ class Draw extends React.Component {
   }
   
   createFileToUpload() {
-    const dataURI = document.querySelector("canvas").toDataURL();
+    const dataURI = this.canvasRef.current.toDataURL();
+    console.log(dataURI);
     const byteString = atob(dataURI.split(",")[1]);
     const mimeString = dataURI
       .split(",")[0]
@@ -61,9 +63,10 @@ class Draw extends React.Component {
   }
 
   render() {
+    
     return (
       <section>
-        <DrawingCanvas />
+        <DrawingCanvas ref={this.canvasRef}/>
         <div>
           <UploadSummary result={this.state.lastResult} />
 

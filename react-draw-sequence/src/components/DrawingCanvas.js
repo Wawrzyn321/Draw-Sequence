@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class DrawingCanvas extends React.Component {
+class DrawingCanvas extends React.Component {
   drawColor = "black";
   eraseColor = "white";
   minPenSize = 1;
@@ -15,8 +15,6 @@ export default class DrawingCanvas extends React.Component {
       penSize: 5
     };
 
-    this.canvasRef = React.createRef();
-
     this.startDrawing = this.startDrawing.bind(this);
     this.stopDrawing = this.stopDrawing.bind(this);
     this.stroke = this.stroke.bind(this);
@@ -25,12 +23,12 @@ export default class DrawingCanvas extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ canvasOffset: this.getOffset(this.canvasRef.current) }, () => {
+    this.setState({ canvasOffset: this.getOffset(this.props.canvasRef.current) }, () => {
       this.resetCanvas();
     });
 
     window.addEventListener("resize", () => {
-      this.setState({ canvasOffset: this.getOffset(this.canvasRef.current) });
+      this.setState({ canvasOffset: this.getOffset(this.props.canvasRef.current) });
     });
   }
 
@@ -106,7 +104,7 @@ export default class DrawingCanvas extends React.Component {
   }
 
   getCanvasContext() {
-    return this.canvasRef.current.getContext("2d");
+    return this.props.canvasRef.current.getContext("2d");
   }
 
   render() {
@@ -114,7 +112,7 @@ export default class DrawingCanvas extends React.Component {
       <section className="row" id="main-container">
         <div className="col-sm-9 mx-auto">
           <canvas
-            ref={this.canvasRef}
+            ref={this.props.canvasRef}
             width="300"
             height="200"
             onMouseDown={this.startDrawing}
@@ -183,3 +181,5 @@ export default class DrawingCanvas extends React.Component {
     );
   }
 }
+
+export default React.forwardRef((props, ref) => <DrawingCanvas canvasRef={ref} {...props}/>);
