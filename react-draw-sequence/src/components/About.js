@@ -1,6 +1,6 @@
 import React from "react";
 
-export const About = props => {
+export default props => {
   return (
     <article className="m-3">
       <h2>About Draw-Sequence</h2>
